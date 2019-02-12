@@ -136,7 +136,8 @@ namespace TcpChatMessenger
             string name = Console.ReadLine();
 
             // setup the messenger
-            string host = "localhost";
+            Console.Write("input ip address: ");
+            string host = Console.ReadLine();
             int port = 6000;
             TcpChatMessenger messenger = new TcpChatMessenger(host, port, name: name);
 

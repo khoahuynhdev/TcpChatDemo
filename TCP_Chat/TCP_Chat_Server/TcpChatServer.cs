@@ -86,7 +86,6 @@ namespace TCP_Chat_Server
         {
             v.GetStream().Close(); // close the network stream
             v.Close(); // close the connection
-
         }
 
         /// <summary>
@@ -125,6 +124,7 @@ namespace TCP_Chat_Server
 
                     // attach a name to it and shove it into the queue
                     string msg = $"{_names[m]}: {Encoding.UTF8.GetString(msgBuffer)}";
+                    Console.WriteLine($"Incoming message: {msg}");
                     _messageQueue.Enqueue(msg);
                 }
 
