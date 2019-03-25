@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpChatMessenger", "TcpChat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpChatViewer", "TcpChatViewer\TcpChatViewer.csproj", "{A6A39937-D01A-4981-9101-410A0B72EBB3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompressionHelper", "CompressionHelper\CompressionHelper.csproj", "{0A3A26D9-C06E-4D1E-91D1-899D10567F5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A6A39937-D01A-4981-9101-410A0B72EBB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6A39937-D01A-4981-9101-410A0B72EBB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6A39937-D01A-4981-9101-410A0B72EBB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A3A26D9-C06E-4D1E-91D1-899D10567F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A3A26D9-C06E-4D1E-91D1-899D10567F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A3A26D9-C06E-4D1E-91D1-899D10567F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A3A26D9-C06E-4D1E-91D1-899D10567F5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

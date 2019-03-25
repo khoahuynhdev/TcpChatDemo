@@ -13,10 +13,11 @@ namespace TCP_Chat_Server
     {
         // what listens in
         private TcpListener _listener;
-
+        
         // types of clients connected
-        private List<TcpClient> _viewers = new List<TcpClient>();        
+        private List<TcpClient> _viewers = new List<TcpClient>();
         private List<TcpClient> _messengers = new List<TcpClient>();
+        private List<TcpClient> _Members = new List<TcpClient>();
 
         // names that are taken by other messengers
         private Dictionary<TcpClient, string> _names = new Dictionary<TcpClient, string>();
@@ -182,11 +183,11 @@ namespace TCP_Chat_Server
             }
         }
 
-        private void _handleNewConnection()
+        private async void _handleNewConnection()
         {
             // there is atleast one, see what the want
             bool good = false;
-            TcpClient newClient = _listener.AcceptTcpClient(); // blocks
+            TcpClient newClient = await _listener.AcceptTcpClientAsync(); // blocks
             NetworkStream netStream = newClient.GetStream();
 
             // modify the default buffer sizes
@@ -199,7 +200,8 @@ namespace TCP_Chat_Server
 
             // let them identifies themselves
             byte[] msgBuffer = new byte[BufferSize];
-            int bytesRead = netStream.Read(msgBuffer, 0, msgBuffer.Length); // blocks
+            int bytesRead = await netStream.ReadAsync(msgBuffer, 0, msgBuffer.Length); // blocks
+
             if (bytesRead > 0)
             {
                 string msg = Encoding.UTF8.GetString(msgBuffer, 0, bytesRead);
@@ -215,7 +217,7 @@ namespace TCP_Chat_Server
                     // send them a "hello messenger"
                     msg = String.Format($"Welcome to the \"{ChatName}\" chat Server!");
                     msgBuffer = Encoding.UTF8.GetBytes(msg);
-                    netStream.Write(msgBuffer, 0, msgBuffer.Length);
+                    await netStream.WriteAsync(msgBuffer, 0, msgBuffer.Length);
                 }
                 else if (msg.StartsWith("name:"))
                 {

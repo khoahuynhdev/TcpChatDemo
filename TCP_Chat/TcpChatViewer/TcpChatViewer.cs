@@ -25,9 +25,11 @@ namespace TcpChatViewer
         public TcpChatViewer(string serverAddress, int port = 6000)
         {
             // create a non-connected TcpClient
-            _client = new TcpClient(); // other constructors will start a connection
-            _client.SendBufferSize = BufferSize;
-            _client.ReceiveBufferSize = BufferSize;
+            _client = new TcpClient
+            {
+                SendBufferSize = BufferSize,
+                ReceiveBufferSize = BufferSize
+            }; // other constructors will start a connection
 
             // set the other things
             ServerAddress = serverAddress;
@@ -38,7 +40,6 @@ namespace TcpChatViewer
             // try to connects
             _client.Connect(ServerAddress, Port); // will resolve DNS for us, blocks
             EndPoint endPoint = _client.Client.RemoteEndPoint;
-
             // make sure we are connected
             if (_client.Connected)
             {
